@@ -37,25 +37,6 @@ public class Airport {
 	}//end constructor
 	
 	
-	//Accessors and Mutators
-	/**
-	 * addToApproach adds a plane to onApproach
-	 * @param p is the plane being added to onApproach
-	 * @return true if successful, false otherwise
-	 */
-	public void addToApproach(Plane p) {
-		onApproach.add(p);
-	}//end addToApproach
-	
-	/**
-	 * addToLanding removes a plane from onApproach and adds it to readyToLand
-	 * @return true if successful, false otherwise
-	 */
-	public void addToLanding() {
-		readyToLand.add(onApproach.remove());
-	}//end addToLanding
-	
-	
 	//Generators
 	/**
 	 * generatePlane has a chance to generate a new plane every time-tick, that is controlled by Random number generation
@@ -64,7 +45,7 @@ public class Airport {
 		int planeGen = generator.nextInt(100)+1;
 		if(planeGen % 2 ==0) {
 			Plane flight = new Plane(""+flightCount, generator.nextInt(5,10)*8);
-			addToApproach(flight);
+			onApproach.add(flight);
 			flightCount++;
 		}
 	}//end generatePlane
